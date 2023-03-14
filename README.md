@@ -1,0 +1,3 @@
+# Chatapp
+In preparation for a bigger chat project for NCCF. 
+More commits underway...
