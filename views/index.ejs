@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    </head>
+    <body>
+
+        <input type="text" class="message">
+        <button onclick="sendMessage()">Send</button>
+    
+        <h1></h1>
+        <script>
+
+            const socket = io();
+
+            //handles response message from server
+            socket.on('message', message => {
+                console.log(message.username + '\n' + message.text + '\n' + message.timestamp);
+            });
+
+            const sendMessage = () => {
+                const messageInput = document.querySelector('.message');
+                const message = messageInput.value;
+                socket.emit('chatMessage', message);
+                messageInput.value = '';
+                messageInput.focus();
+            }
+
+        </script>
+    </body>
+</html>
